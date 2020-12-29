@@ -26,14 +26,18 @@ class Firstpage:
         btnbook = Button(BodyFrame,text='Book Tickets',padx=20,pady=20)
         btnbook.grid(row=0,column=0)
 
-        btnadmin = Button(BodyFrame,text='Admin Section',padx=20,pady=20,command=lambda:self.swap(frontend.Movie(root)))
+        btnadmin = Button(BodyFrame,text='Admin Section',padx=20,pady=20,command=lambda:self.open(MainFrame))
         btnadmin.grid(row=0,column=1)
 
-    def swap(self,frame):
-        
-        pass
-        
 
+    def open(self,frame):
+        
+        frame.grid_forget()
+        frontend.Movie(root)
+
+
+        
+        
 if __name__=='__main__':
 	root=Tk()
 	database = Firstpage(root)
