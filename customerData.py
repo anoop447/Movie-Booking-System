@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox
 import database
+import tickets
 
 class Custm:
 
@@ -18,13 +19,15 @@ class Custm:
             self.txtCustom_phno.delete(0,END)
            
 
-        MainFrame = Frame(self.root,bg='black')
-        MainFrame.grid()
+        
 
         Custom_id = StringVar()
         Custom_name = StringVar()
         Custom_email = StringVar()
         Custom_phno = StringVar()
+
+        MainFrame = Frame(self.root,bg='black')
+        MainFrame.grid()
 
 
         HeadFrame = Frame(MainFrame,bd=1,bg='black',relief=RIDGE,padx=50,pady=10)
@@ -64,15 +67,19 @@ class Custm:
         self.txtCustom_phno.grid(row=3, column=1)
 
         self.btnadd=Button(BottomFrame, text="Add", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
-        self.btnadd.grid(row=0, column=1)
+        self.btnadd.grid(row=0, column=0)
 
         self.btnclear=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
-        self.btnclear.grid(row=0, column=2)
+        self.btnclear.grid(row=0, column=1)
 
-        self.btnnext=Button(BottomFrame, text="Next", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
-        self.btnnext.grid(row=0, column=3)
+        self.btnnext=Button(BottomFrame, text="Next", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=lambda:self.openTicketsInfo()) # if wanted (Mainframe) as args
+        self.btnnext.grid(row=0, column=2)
 
-
+    def openTicketsInfo(self):
+        
+        #frame.grid_forget()
+        top = Toplevel()
+        tickets.Ticket(top)
 
 
 
