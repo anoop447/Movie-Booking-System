@@ -108,11 +108,11 @@ class Movie:
         self.btnadd=Button(BottomFrame, text="Add New", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
         self.btnadd.grid(row=0, column=0)
 
-        self.btnadd=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
-        self.btnadd.grid(row=0, column=1)
+        self.btnclear=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
+        self.btnclear.grid(row=0, column=1)
 
-        self.btnadd=Button(BottomFrame, text="Delete", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
-        self.btnadd.grid(row=0, column=2)
+        self.btndel=Button(BottomFrame, text="Delete", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
+        self.btndel.grid(row=0, column=2)
 
 
 
