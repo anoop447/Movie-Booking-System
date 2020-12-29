@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.messagebox
 import frontend
+import customerData
 
 class Firstpage:
 
@@ -23,19 +24,22 @@ class Firstpage:
         BodyFrame=Frame(MainFrame, bd=2, width=1300, height=500, padx=20, pady=20, bg="black", relief=RIDGE)
         BodyFrame.pack(side=BOTTOM)
 
-        btnbook = Button(BodyFrame,text='Book Tickets',padx=20,pady=20)
+        btnbook = Button(BodyFrame,text='Book Tickets',padx=20,pady=20,command=lambda:self.openCustomerInfo(MainFrame))
         btnbook.grid(row=0,column=0)
 
-        btnadmin = Button(BodyFrame,text='Admin Section',padx=20,pady=20,command=lambda:self.open(MainFrame))
+        btnadmin = Button(BodyFrame,text='Admin Section',padx=20,pady=20,command=lambda:self.openAdminSection(MainFrame))
         btnadmin.grid(row=0,column=1)
 
 
-    def open(self,frame):
+    def openAdminSection(self,frame):
         
         frame.grid_forget()
         frontend.Movie(root)
 
 
+    def openCustomerInfo(self,frame):
+        frame.grid_forget()
+        customerData.Custm(root)
         
         
 if __name__=='__main__':
