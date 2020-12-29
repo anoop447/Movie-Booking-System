@@ -1,3 +1,3 @@
 # Movie-Booking-System
 
-# Run using python first.py  in your terminal
+<h2>Run using python first.py command in your terminal</h2>
