@@ -18,7 +18,7 @@ class Firstpage:
         HeadFrame = Frame(MainFrame,bd=1,bg='black',relief=RIDGE,padx=50,pady=10)
         HeadFrame.pack(side=TOP)
 
-        self.TFrame=Label(HeadFrame, font=('Arial', 50, 'bold'), text="MOVIE BOOKING SYSTEM", bg="black", fg="red")
+        self.TFrame=Label(HeadFrame, font=('Arial', 50, 'bold'), text="MOVIE TICKET BOOKING SYSTEM", bg="black", fg="red")
         self.TFrame.grid()
 
         BodyFrame=Frame(MainFrame, bd=2, width=1300, height=500, padx=20, pady=20, bg="black", relief=RIDGE)

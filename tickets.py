@@ -31,7 +31,7 @@ class Ticket:
         HeadFrame = Frame(MainFrame,bd=1,bg='black',relief=RIDGE,padx=50,pady=10)
         HeadFrame.pack(side=TOP)
 
-        self.TFrame=Label(HeadFrame, font=('Arial', 50, 'bold'), text="MOVIE BOOKING SYSTEM", bg="black", fg="red")
+        self.TFrame=Label(HeadFrame, font=('Arial', 50, 'bold'), text="MOVIE TICKET BOOKING SYSTEM", bg="black", fg="red")
         self.TFrame.grid() 
 
         BottomFrame=Frame(MainFrame, bd=2, width=1350, height=70, padx=18, pady=10, bg="black", relief=RIDGE)
