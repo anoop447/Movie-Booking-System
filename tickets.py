@@ -1,10 +1,13 @@
 from tkinter import *
 import tkinter.messagebox
+import database
 
 
 class Ticket:
 
     def __init__(self, root):
+
+        d = database.Backend()
         self.root=root
         self.root.title('Movie Booking System')
         self.root.geometry('1350x750')
@@ -23,6 +26,11 @@ class Ticket:
             self.txtPrice.delete(0,END)
             self.txtSeat_no.delete(0,END)
             self.txtShow_date.delete(0,END)
+
+        def disData():
+            MovieList.delete(0,END)
+            for row in d.ViewMovieData():
+                MovieList.insert(END,row,str(''))
 
         #Frames
         MainFrame = Frame(self.root,bg='black')
@@ -87,7 +95,8 @@ class Ticket:
         self.btnclear=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
         self.btnclear.grid(row=0, column=0)   #column 2
 
-
+        self.btndisp=Button(BottomFrame, text="Display", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=disData)
+        self.btndisp.grid(row=0, column=1)
 
 if __name__=='__main__':
 	root=Tk()

@@ -6,6 +6,9 @@ import database
 class Movie:
 
     def __init__(self, root):
+        d = database.Backend()
+        #d.conn
+
         self.root=root
         self.root.title('Movie Ticket Booking System')
         self.root.geometry('1350x750')
@@ -30,6 +33,28 @@ class Movie:
             self.txtBudget.delete(0,END)
             self.txtRating.delete(0,END)
             self.txtDuration.delete(0,END)
+
+        def addData():
+            if (len(Movie_ID.get())!=0):
+                d.addMovie(Movie_ID.get(),Movie_Name.get(),Release_Date.get(),Director.get(),Cast.get(),Budget.get(),Duration.get(),Rating.get())
+                MovieList.delete(0,END)
+                MovieList.insert(Movie_ID.get(),Movie_Name.get(),Release_Date.get(),Director.get(),Cast.get(),Budget.get(),Duration.get(),Rating.get())
+                disData()
+            else:
+                tkinter.messagebox.askyesno('Enter a Movie ID')
+        
+        def disData():
+            MovieList.delete(0,END)
+            for row in d.ViewMovieData():
+                MovieList.insert(END,row,str(''))
+
+        def delData():
+            if (len(Movie_ID.get())!=0):
+                d.DeleteMovieRec(Movie_ID.get())
+                clcdata()
+                disData()
+
+            
 
         #Fraames
         MainFrame = Frame(self.root,bg='black')
@@ -105,18 +130,21 @@ class Movie:
         scroll.config(command=MovieList.yview)
 
 
-        self.btnadd=Button(BottomFrame, text="Add New", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
+        self.btnadd=Button(BottomFrame, text="Add New", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=addData)
         self.btnadd.grid(row=0, column=0)
 
         self.btnclear=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
         self.btnclear.grid(row=0, column=1)
 
-        self.btndel=Button(BottomFrame, text="Delete", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange")
-        self.btndel.grid(row=0, column=2)
+        self.btndisp=Button(BottomFrame, text="Display", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=disData)
+        self.btndisp.grid(row=0, column=2)
+
+        self.btndel=Button(BottomFrame, text="Delete", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=delData)
+        self.btndel.grid(row=0, column=3)
 
 
 
 if __name__=='__main__':
 	root=Tk()
-	database = Movie(root)
+	application = Movie(root)
 	root.mainloop()
