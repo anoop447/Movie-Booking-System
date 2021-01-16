@@ -7,7 +7,7 @@ class Movie:
 
     def __init__(self, root):
         self.root=root
-        self.root.title('Movie Booking System')
+        self.root.title('Movie Ticket Booking System')
         self.root.geometry('1350x750')
         self.root.config(bg="black")
 
