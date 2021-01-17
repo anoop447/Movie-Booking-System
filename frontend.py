@@ -2,6 +2,7 @@ from tkinter import *
 import tkinter.messagebox
 import database
 import first
+import booking
 
 
 class Movie:
@@ -155,8 +156,8 @@ class Movie:
         MovieList.grid(row=0, column=0, padx=8)
         scroll.config(command=MovieList.yview)
 
-        self.btnback=Button(BottomFrame, text="Back", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=lambda:self.goBack(MainFrame))
-        self.btnback.grid(row=0, column=0)
+        #self.btnback=Button(BottomFrame, text="Back", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=lambda:self.goBack(MainFrame))
+        #self.btnback.grid(row=0, column=0)
 
         self.btnadd=Button(BottomFrame, text="Add New", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=addData)
         self.btnadd.grid(row=0, column=1)
@@ -170,10 +171,21 @@ class Movie:
         self.btndel=Button(BottomFrame, text="Delete", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=delData)
         self.btndel.grid(row=0, column=4)
 
+        self.btnbook=Button(BottomFrame, text="Bookings", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=lambda:self.gotoBook())
+        self.btnbook.grid(row=0, column=5)
+
+    '''
     def goBack(self,frame):
         
         frame.grid_forget()
         first.Firstpage(root)
+    '''
+
+    def gotoBook(self):
+        
+        #frame.grid_forget()
+        top = Toplevel()
+        booking.Bookings(top)
 
 
 

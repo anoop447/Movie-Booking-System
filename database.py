@@ -102,6 +102,15 @@ class Backend():
         conn.commit()
         conn.close()
 
+    def ViewTicketsData(self):
+        conn=sqlite3.connect("movie.db")    
+        c=conn.cursor()
+        c.execute("SELECT * FROM tickets")
+        rows=c.fetchall()
+        conn.commit()
+        conn.close()    
+        return rows
+
 
     def addBooking(self,cid,ticket_no,show_date):
         conn=sqlite3.connect("movie.db")    
@@ -116,3 +125,15 @@ class Backend():
         c.execute('DELETE from booking WHERE cid=?',(cid,))
         conn.commit()
         conn.close()
+
+    def ViewBookingRec(self):
+        conn=sqlite3.connect("movie.db")    
+        c=conn.cursor()
+        c.execute("""SELECT c.cid,t.ticket_no,t.show_date
+                    FROM customer c,tickets t
+
+                """)
+        rows = c.fetchall()
+        conn.commit()
+        conn.close()
+        return rows
