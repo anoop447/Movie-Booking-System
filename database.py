@@ -79,6 +79,22 @@ class Backend():
         conn.commit()
         conn.close()
 
+    def ViewCustomerData(self):
+        conn=sqlite3.connect("movie.db")    
+        c=conn.cursor()
+        c.execute("SELECT * FROM customer")
+        rows=c.fetchall()
+        conn.commit()
+        conn.close()    
+        return rows
+
+    def DeleteCustomRec(self,cid):    
+        conn=sqlite3.connect("movie.db")    
+        c=conn.cursor()
+        c.execute("DELETE FROM customer WHERE cid=?", (cid,))
+        conn.commit()
+        conn.close()
+
     def addTickets(self,ticket_no,m_name,price,seat_no,show_date):
         conn=sqlite3.connect("movie.db")    
         c=conn.cursor()

@@ -27,14 +27,14 @@ class Firstpage:
         btnbook = Button(BodyFrame,text='Book Tickets',padx=20,pady=20,command=lambda:self.openCustomerInfo(MainFrame))
         btnbook.grid(row=0,column=0)
 
-        btnadmin = Button(BodyFrame,text='Admin Section',padx=20,pady=20,command=lambda:self.openAdminSection(MainFrame))
+        btnadmin = Button(BodyFrame,text='Admin Section',padx=20,pady=20,command=lambda:self.openAdminSection())
         btnadmin.grid(row=0,column=1)
 
 
-    def openAdminSection(self,frame):
-        
-        frame.grid_forget()
-        frontend.Movie(root)
+    def openAdminSection(self):
+        top = Toplevel()
+        #frame.grid_forget()
+        frontend.Movie(top)
 
 
     def openCustomerInfo(self,frame):

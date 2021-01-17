@@ -32,6 +32,15 @@ class Ticket:
             for row in d.ViewMovieData():
                 MovieList.insert(END,row,str(''))
 
+        def addData():
+            if (len(Ticket_no.get())!=0):
+                d.addTickets(Ticket_no.get(),Movie_name.get(),Price.get(),Seat_no.get(),Show_date.get())
+                #MovieList.delete(0,END)
+                #MovieList.insert(Custom_id.get(),Movie_Name.get(),Release_Date.get(),Director.get(),Cast.get(),Budget.get(),Duration.get(),Rating.get())
+                #disData()
+            else:
+                tkinter.messagebox.askyesno('Enter a Ticket Number')
+
         #Frames
         MainFrame = Frame(self.root,bg='black')
         MainFrame.grid()
@@ -90,13 +99,16 @@ class Ticket:
         MovieList.grid(row=0, column=0, padx=8)
         scroll.config(command=MovieList.yview)
         
-        #Buttons        
+        #Buttons      
+          
+        self.btnadd=Button(BottomFrame, text="Add", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=addData)
+        self.btnadd.grid(row=0, column=0)
 
         self.btnclear=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
-        self.btnclear.grid(row=0, column=0)   #column 2
+        self.btnclear.grid(row=0, column=1)   #column 2
 
         self.btndisp=Button(BottomFrame, text="Display", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=disData)
-        self.btndisp.grid(row=0, column=1)
+        self.btndisp.grid(row=0, column=2)
 
 if __name__=='__main__':
 	root=Tk()
