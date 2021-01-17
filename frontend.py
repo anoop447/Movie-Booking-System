@@ -1,13 +1,17 @@
 from tkinter import *
 import tkinter.messagebox
 import database
+import first
 
 
 class Movie:
+    
+    
 
     def __init__(self, root):
         d = database.Backend()
         #d.conn
+        
 
         self.root=root
         self.root.title('Movie Ticket Booking System')
@@ -50,9 +54,31 @@ class Movie:
 
         def delData():
             if (len(Movie_ID.get())!=0):
-                d.DeleteMovieRec(Movie_ID.get())
+                d.DeleteMovieRec(sd[0])
                 clcdata()
                 disData()
+
+        def movieRec(event):
+            global sd
+            searchmovie=MovieList.curselection()[0]
+            sd=MovieList.get(searchmovie)
+            self.txtMovie_ID.delete(0,END)
+            self.txtMovie_ID.insert(END,sd[0])
+            self.txtMovie_Name.delete(0,END)
+            self.txtMovie_Name.insert(END,sd[1])
+            self.txtRelease_Date.delete(0,END)
+            self.txtRelease_Date.insert(END,sd[2])
+            self.txtDirector.delete(0,END)
+            self.txtDirector.insert(END,sd[3])
+            self.txtCast.delete(0,END)
+            self.txtCast.insert(END,sd[4])
+            self.txtBudget.delete(0,END)
+            self.txtBudget.insert(END,sd[5])
+            self.txtDuration.delete(0,END)
+            self.txtDuration.insert(END,sd[6])
+            self.txtRating.delete(0,END)
+            self.txtRating.insert(END,sd[7])
+            
 
             
 
@@ -125,22 +151,29 @@ class Movie:
         scroll.grid(row=0, column=1, sticky='ns')
 
         MovieList=Listbox(RightBody, width=41, height=16, font=('Arial', 12, 'bold'), bg="black", fg="white", yscrollcommand=scroll.set)
-        #MovieList.bind('<<ListboxSelect>>', movierec)
+        MovieList.bind('<<ListboxSelect>>', movieRec)
         MovieList.grid(row=0, column=0, padx=8)
         scroll.config(command=MovieList.yview)
 
+        self.btnback=Button(BottomFrame, text="Back", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=lambda:self.goBack(MainFrame))
+        self.btnback.grid(row=0, column=0)
 
         self.btnadd=Button(BottomFrame, text="Add New", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=addData)
-        self.btnadd.grid(row=0, column=0)
+        self.btnadd.grid(row=0, column=1)
 
         self.btnclear=Button(BottomFrame, text="Clear", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=clcdata)
-        self.btnclear.grid(row=0, column=1)
+        self.btnclear.grid(row=0, column=2)
 
         self.btndisp=Button(BottomFrame, text="Display", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=disData)
-        self.btndisp.grid(row=0, column=2)
+        self.btndisp.grid(row=0, column=3)
 
         self.btndel=Button(BottomFrame, text="Delete", font=('Arial', 20, 'bold'), width=10, height=1, bd=4, bg="orange",command=delData)
-        self.btndel.grid(row=0, column=3)
+        self.btndel.grid(row=0, column=4)
+
+    def goBack(self,frame):
+        
+        frame.grid_forget()
+        first.Firstpage(root)
 
 
 
