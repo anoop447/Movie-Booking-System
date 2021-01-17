@@ -85,7 +85,7 @@ class Custm:
         self.txtCustom_email=Entry(LeftBody, font=('Arial', 18, 'bold'), textvariable=Custom_email, width=39, bg="black", fg="white")
         self.txtCustom_email.grid(row=2, column=1)
 
-        self.lblCustom_phno=Label(LeftBody, font=('Arial', 18, 'bold'), text="Customer Phno:", padx=2, pady=2, bg="black", fg="orange")
+        self.lblCustom_phno=Label(LeftBody, font=('Arial', 18, 'bold'), text="Customer Ph no:", padx=2, pady=2, bg="black", fg="orange")
         self.lblCustom_phno.grid(row=3, column=0, sticky=W) 
         self.txtCustom_phno=Entry(LeftBody, font=('Arial', 18, 'bold'), textvariable=Custom_phno, width=39, bg="black", fg="white")
         self.txtCustom_phno.grid(row=3, column=1)
